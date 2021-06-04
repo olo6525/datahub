@@ -34,7 +34,7 @@ find50list_button=driver.find_element_by_xpath('//*[@id="contents"]/div[2]/div[3
 find50list_button.click()
 sleep(3)
 
-for i in range(609, 93655):
+for i in range(735, 93655):
     print(str(i-1))
     for j in range(1, 51):
         store_num =driver.find_element_by_xpath('//*[@id="tbl_bsn_list"]/tbody/tr['+str(j)+']/td[2]')
@@ -62,7 +62,7 @@ for i in range(609, 93655):
         curs.execute(sql,val)
         db.commit()
     driver.get(url='http://www.foodsafetykorea.go.kr/portal/specialinfo/searchInfoCompany.do?menu_grp=MENU_NEW04&menu_no=2813#page'+str(i))
-    sleep(8)
+    sleep(10)
 
 
 
