@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+<<<<<<< HEAD
   <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.9" project-jdk-type="Python SDK" />
+=======
+  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.8 (temsorflowtest)" project-jdk-type="Python SDK" />
+>>>>>>> f03c404e6dc2bd35f851bd395337ddf80abc8ae2
 </project>
