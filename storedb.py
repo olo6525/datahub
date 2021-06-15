@@ -38,7 +38,6 @@ for i in range(6348, 93655):
     driver.get(
         url='http://www.foodsafetykorea.go.kr/portal/specialinfo/searchInfoCompany.do?menu_grp=MENU_NEW04&menu_no=2813#page' + str(
             i))
-<<<<<<< HEAD
     sleep(30)
     print(str(i))
     for j in range(1, 51):
@@ -66,7 +65,7 @@ for i in range(6348, 93655):
         val = (store_num.text, store_name.text, store_address.text, store_city.text, float(latitude), float(longitude), float(latitude), float(longitude))
         curs.execute(sql,val)
         db.commit()
-=======
+
     print(str(i))
     while True:
         try:
@@ -104,7 +103,6 @@ for i in range(6348, 93655):
                 db.commit()
             break
 
->>>>>>> 828fd7beee67a8fcb66968efe6ddee3cc8799f9b
 
 
 
