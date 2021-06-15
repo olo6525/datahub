@@ -38,34 +38,6 @@ for i in range(6348, 93655):
     driver.get(
         url='http://www.foodsafetykorea.go.kr/portal/specialinfo/searchInfoCompany.do?menu_grp=MENU_NEW04&menu_no=2813#page' + str(
             i))
-    sleep(30)
-    print(str(i))
-    for j in range(1, 51):
-        store_num =driver.find_element_by_xpath('//*[@id="tbl_bsn_list"]/tbody/tr['+str(j)+']/td[2]')
-        store_name = driver.find_element_by_xpath('//*[@id="tbl_bsn_list"]/tbody/tr['+str(j)+']/td[3]')
-        store_address = driver.find_element_by_xpath('//*[@id="tbl_bsn_list"]/tbody/tr['+str(j)+']/td[6]')
-        store_city = driver.find_element_by_xpath('//*[@id="tbl_bsn_list"]/tbody/tr['+str(j)+']/td[7]')
-        url = "https://naveropenapi.apigw.ntruss.com/map-geocode/v2/geocode"
-        address = store_address.text
-        params = "query="+address+"&X-NCP-APIGW-API-KEY-ID=kvk4abf4qy&X-NCP-APIGW-API-KEY=24zN4WAXOvTx96sUImiKnYAFX2K8KRES8sYPEIC0"
-        res = requests.get(url,params)
-        location = json.loads(res.text)
-        latitude=float(0)
-        longitude=float(0)
-        try:
-            location = location['addresses'][0]
-            latitude = float(location['y'])
-            longitude = float(location['x'])
-            print(latitude)
-            print(longitude)
-        except Exception:
-            pass
-            print('주소없음')
-        sql="insert into storeinfo (storenum, storename, storeaddress, storelocation, latitude, longitude) values(%s, %s, %s, %s, %s, %s) on duplicate key update latitude=%s, longitude=%s"
-        val = (store_num.text, store_name.text, store_address.text, store_city.text, float(latitude), float(longitude), float(latitude), float(longitude))
-        curs.execute(sql,val)
-        db.commit()
-
     print(str(i))
     while True:
         try:
@@ -102,11 +74,6 @@ for i in range(6348, 93655):
                 curs.execute(sql, val)
                 db.commit()
             break
-
-
-
-
-
 
 db.close()
 driver.close()
