@@ -18,7 +18,7 @@ import requests
 db=pymysql.connect(user='user_me', passwd='Qordnjsrldustmq1!', host='3.36.86.210', db='storedb', charset='utf8')
 curs = db.cursor()
 
-driver = webdriver.Chrome(executable_path='chromedriver')
+driver = webdriver.Chrome(executable_path='./chromedriver')
 driver.implicitly_wait(time_to_wait=5)
 driver.get(url='http://www.foodsafetykorea.go.kr/portal/specialinfo/searchInfoCompany.do?menu_grp=MENU_NEW04&menu_no=2813#page1')
 driver.implicitly_wait(time_to_wait=1)
@@ -34,8 +34,12 @@ find50list_button=driver.find_element_by_xpath('//*[@id="contents"]/div[2]/div[3
 find50list_button.click()
 sleep(3)
 
-for i in range(832, 93655):
-    print(str(i-1))
+for i in range(6348, 93655):
+    driver.get(
+        url='http://www.foodsafetykorea.go.kr/portal/specialinfo/searchInfoCompany.do?menu_grp=MENU_NEW04&menu_no=2813#page' + str(
+            i))
+    sleep(30)
+    print(str(i))
     for j in range(1, 51):
         store_num =driver.find_element_by_xpath('//*[@id="tbl_bsn_list"]/tbody/tr['+str(j)+']/td[2]')
         store_name = driver.find_element_by_xpath('//*[@id="tbl_bsn_list"]/tbody/tr['+str(j)+']/td[3]')
@@ -61,8 +65,8 @@ for i in range(832, 93655):
         val = (store_num.text, store_name.text, store_address.text, store_city.text, float(latitude), float(longitude), float(latitude), float(longitude))
         curs.execute(sql,val)
         db.commit()
-    driver.get(url='http://www.foodsafetykorea.go.kr/portal/specialinfo/searchInfoCompany.do?menu_grp=MENU_NEW04&menu_no=2813#page'+str(i))
-    sleep(10)
+
+
 
 
 
