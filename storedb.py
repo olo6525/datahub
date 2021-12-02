@@ -24,17 +24,21 @@ driver.get(url='http://www.foodsafetykorea.go.kr/portal/specialinfo/searchInfoCo
 driver.implicitly_wait(time_to_wait=1)
 check_box = driver.find_element_by_xpath('//*[@id="mode1"]/div[1]/div[1]/ul/li[4]/a')
 check_box.click()
-driver.implicitly_wait(time_to_wait=3)
+driver.implicitly_wait(time_to_wait=5)
+close_popup_button = driver.find_element_by_xpath('//*[@id="wrap"]/div[2]/div[2]/a[2]')
+close_popup_button.click()
+driver.implicitly_wait(time_to_wait=2)
 search_button = driver.find_element_by_xpath('//*[@id="srchBtn"]')
+sleep(2)
 search_button.click()
 sleep(10)
 howmanylist_button=driver.find_element_by_xpath('//*[@id="a_list_cnt"]')
 howmanylist_button.click()
-find50list_button=driver.find_element_by_xpath('//*[@id="contents"]/div[2]/div[3]/div/ul/li[5]/a')
+find50list_button=driver.find_element_by_xpath('//*[@id="contents"]/main/section/div[2]/div[2]/div[3]/div/ul/li[5]/a')
 find50list_button.click()
 sleep(3)
 
-for i in range(6348, 93655):
+for i in range(2, 93655):
     driver.get(
         url='http://www.foodsafetykorea.go.kr/portal/specialinfo/searchInfoCompany.do?menu_grp=MENU_NEW04&menu_no=2813#page' + str(
             i))
